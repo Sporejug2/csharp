@@ -51,6 +51,9 @@
             this.label9 = new System.Windows.Forms.Label();
             this.tb10 = new System.Windows.Forms.TextBox();
             this.UserID = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnLog
@@ -154,11 +157,11 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(109, 92);
+            this.label4.Location = new System.Drawing.Point(319, 241);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(50, 13);
+            this.label4.Size = new System.Drawing.Size(30, 13);
             this.label4.TabIndex = 15;
-            this.label4.Text = "longitude";
+            this.label4.Text = "View";
             // 
             // label5
             // 
@@ -249,11 +252,41 @@
             this.UserID.TabIndex = 26;
             this.UserID.Text = "UserId";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(385, 241);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(23, 13);
+            this.label3.TabIndex = 27;
+            this.label3.Text = "like";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(442, 241);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(36, 13);
+            this.label10.TabIndex = 28;
+            this.label10.Text = "dislike";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(109, 88);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(50, 13);
+            this.label11.TabIndex = 30;
+            this.label11.Text = "longitude";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(603, 316);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.UserID);
             this.Controls.Add(this.tb10);
             this.Controls.Add(this.label9);
@@ -310,6 +343,9 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox tb10;
         private System.Windows.Forms.Label UserID;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
     }
 }
 

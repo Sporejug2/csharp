@@ -28,7 +28,7 @@ namespace WindowsFormsApp1
 
         private void btnispis_Click(object sender, EventArgs e)
         {
-            List<string> dataItems = new List<string>();
+            
             var connString = "Host=localhost; Port = 5432; Username='postgres'; Password=87654321; Database=test";
 
             using (var conn = new NpgsqlConnection(connString))
@@ -62,7 +62,7 @@ namespace WindowsFormsApp1
             conn.Open();
             NpgsqlCommand command = new NpgsqlCommand("insert into reporting3(id, cause , datetime, longitude , latitude , ratingP, ratingM ,direction , ban,  userid) VALUES (@id, @cause ,  @datetime, @longitude , @latitude , @ratingP, @ratingM ,@direction , @ban,  @userid);", conn);
 
-            command.Parameters.AddWithValue("@id", 2);
+            command.Parameters.AddWithValue("@id", 7);
             command.Parameters.AddWithValue("@cause", 1);
             command.Parameters.AddWithValue("@datetime", DateTime.Now);
             command.Parameters.AddWithValue("@longitude", 1);
@@ -72,10 +72,16 @@ namespace WindowsFormsApp1
             command.Parameters.AddWithValue("@direction", 1);
             command.Parameters.AddWithValue("@ban", 1);
             command.Parameters.AddWithValue("@UserId", 1);
+
+           
+
+            NpgsqlCommand command2 = new NpgsqlCommand("SELECT id FROM reporting3", conn);
+            label4.Text = command2.ToString();
+
             command.ExecuteNonQuery();
 
             conn.Close();
-
+            
 
             /* NpgsqlCommand command = new NpgsqlCommand("insert into reporting2(id, name , age , adress, salery) VALUES (@id, @name, @age, @adress, @salery);" , conn);
 
@@ -149,6 +155,7 @@ namespace WindowsFormsApp1
             NpgsqlCommand command = new NpgsqlCommand("insert into reporting3(id, cause , datetime, longitude , latitude , ratingP, ratingM ,direction , ban,  userid) VALUES (@id, @cause ,  @datetime, @longitude , @latitude , @ratingP, @ratingM ,@direction , @ban,  @userid);", conn);
 
 
+
             var text1 = Convert.ToInt32(tb1.Text);
             var text2 = Convert.ToInt32(tb2.Text);
             var text4 = Convert.ToInt32(tb4.Text);
@@ -169,7 +176,22 @@ namespace WindowsFormsApp1
             command.Parameters.AddWithValue("@direction", text8);
             command.Parameters.AddWithValue("@ban", text9);
             command.Parameters.AddWithValue("@UserId", text10);
+
+            
+                using (var cmd = new NpgsqlCommand("SELECT id FROM reporting3", conn))
+                using (var reader = cmd.ExecuteReader())
+                    /*  for (int i = 0; reader.Read(); i++)
+                      {
+                          rtb.Text = dataItems.Add(reader + "\r\n");
+                      }*/
+                    while (reader.Read())
+                        label4.Text = (reader.GetString(0));
+
+
+            
+
             command.ExecuteNonQuery();
+
 
             conn.Close();
         }
@@ -182,6 +204,27 @@ namespace WindowsFormsApp1
         private void tb6_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var connString = "Host=localhost; Port = 5432; Username='postgres'; Password=87654321; Database=test";
+
+            using (var conn = new NpgsqlConnection(connString))
+            {
+
+                conn.Open();
+                using (var cmd = new NpgsqlCommand("SELECT id FROM reporting3", conn))
+                using (var reader = cmd.ExecuteReader())
+                    /*  for (int i = 0; reader.Read(); i++)
+                      {
+                          rtb.Text = dataItems.Add(reader + "\r\n");
+                      }*/
+                    while (reader.Read())
+                        label4.Text = (reader.GetString(0));
+
+
+            }
         }
     }
 }
